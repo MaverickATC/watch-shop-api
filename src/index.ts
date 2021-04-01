@@ -4,6 +4,14 @@ import mongoose from 'mongoose'
 import winston, { format } from 'winston'
 import cors from 'cors'
 
+//routes
+import productsRouter from './routes/product'
+import specsRouter from './routes/spec'
+import usersRouter from './routes/user'
+import adminsRouter from './routes/admin'
+import modificationRouter from './routes/modification'
+import orderRouter from './routes/order'
+
 const app = express()
 
 const port = process.env.PORT
@@ -36,6 +44,13 @@ if (process.env.NODE_ENV !== 'production') {
 //middleware
 app.use(express.json())
 app.use(cors())
+
+app.use('/products', productsRouter)
+app.use('/specs', specsRouter)
+app.use('/users', usersRouter)
+app.use('/admins', adminsRouter)
+app.use('/modifications', modificationRouter)
+app.use('/orders', orderRouter)
 
 app.get('/', (req, res) => {
   res.send('hi')
