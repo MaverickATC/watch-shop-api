@@ -8,8 +8,8 @@ export const getAllOrders = async (req: Request, res: Response) => {
     const ordersList = await Order.find()
       .populate('productId')
       .populate('modifications')
-    res.status(200).send(ordersList)
+    return res.status(200).send(ordersList)
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' })
+    return res.status(500).json({ message: 'Something went wrong' })
   }
 }

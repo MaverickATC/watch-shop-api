@@ -1,4 +1,10 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Document } from 'mongoose'
+
+//interfaces
+export interface IModification extends Document {
+  name: string
+  value: string
+}
 
 const ModificationSchema = new Schema(
   {

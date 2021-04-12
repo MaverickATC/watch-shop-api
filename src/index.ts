@@ -3,6 +3,7 @@ import 'dotenv/config'
 import mongoose from 'mongoose'
 import winston, { format } from 'winston'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 //routes
 import productsRouter from './routes/product'
@@ -44,6 +45,7 @@ if (process.env.NODE_ENV !== 'production') {
 //middleware
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 
 app.use('/products', productsRouter)
 app.use('/specs', specsRouter)
@@ -56,6 +58,8 @@ app.get('/', (req, res) => {
   res.send('hi')
 })
 
+
+//TODO: clean this
 app.post('/test', (req, res) => {
   console.log(req.body)
   res.send(req.body)

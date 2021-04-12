@@ -1,4 +1,29 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Document } from 'mongoose'
+
+//interfaces
+import { IModification } from './modification'
+import { IProduct } from './product'
+
+interface IBuyer {
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
+}
+
+interface IOrderProduct {
+  productId: IProduct['_id']
+  modifications?: IModification[],
+  quantity: number
+  price: number
+}
+
+export interface IOrder extends Document {
+  buyer: IBuyer
+  products: IOrderProduct[]
+  discount: number
+  status: string
+}
 
 const OrderSchema = new Schema(
   {
@@ -21,6 +46,11 @@ const OrderSchema = new Schema(
           min: [1, 'Quantity can not be less then 1.'],
           deafult: 1,
         },
+        price: {
+          type: Number,
+          required: true,
+          min: [0, 'Price can not be less then 0.'],
+        }
       },
     ],
     discount: {

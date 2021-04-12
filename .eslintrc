@@ -2,8 +2,8 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from @typescript-eslint/eslint-plugin
-    "plugin:prettier/recommended"
+    "@typescript-eslint/eslint-plugin", // Uses the recommended rules from @typescript-eslint/eslint-plugin
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
